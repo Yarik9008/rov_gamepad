@@ -221,7 +221,7 @@ motor0 motor1 motor2 motor3 motor4 motor5 motor6 motor7 camera manipulator light
 ### Отладочная телеметрия (Serial2)
 ```
 JOYSTICKS: J1X:0.50 J1Y:0.00 J2X:0.00 J2Y:0.00 | BUTTONS: B0:0 B1:0 B2:0 B3:0 B4:0 B5:0
-COMMANDS: M0:1500 M1:1500 M2:1500 M3:1500 M4:1500 M5:1500 M6:1500 M7:1500 | PAYLOAD: CAM:1500 MAN:1000 LIGHT:1000
+COMMANDS: M0:1500 M1:1500 M2:1500 M3:1500 M4:1500 M5:1500 M6:1500 M7:1500 CAM:1500 MAN:1000 LIGHT:1000
 ```
 
 ## ⚙️ Настройки системы

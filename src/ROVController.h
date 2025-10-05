@@ -224,8 +224,7 @@ private:
         Serial2.print(commands.motor6_pwm);
         Serial2.print(" M7:");
         Serial2.print(commands.motor7_pwm);
-        Serial2.print(" | PAYLOAD: ");
-        Serial2.print("CAM:");
+        Serial2.print(" CAM:");
         Serial2.print(commands.camera_servo);
         Serial2.print(" MAN:");
         Serial2.print(commands.manipulator);
