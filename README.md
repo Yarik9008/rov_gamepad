@@ -95,16 +95,14 @@ Serial2 (PB10/PB11) → отладочный вывод (115200 baud)
 ```cpp
 struct JoystickData {
     float linear_x;        // -1.0 до 1.0 (вперед/назад)
-    float linear_y;        // -1.0 до 1.0 (вверх/вниз)
-    float linear_z;        // -1.0 до 1.0 (влево/вправо)
+    float linear_y;        // -1.0 до 1.0 (влево/вправо)
+    float linear_z;        // -1.0 до 1.0 (вверх/вниз)
+    float rotate_x;        // -1.0 до 1.0 (поворот)
     float rotate_y;        // -1.0 до 1.0 (поворот)
-    float rotate_x;        // 0.0 (не используется)
-    float rotate_z;        // 0.0 (не используется)
+    float rotate_z;        // -1.0 до 1.0 (поворот)
     int servo_cam;         // -1, 0, 1 (поворот камеры)
     int gripper;           // -1, 0, 1 (манипулятор)
     int led;               // 0, 1 (освещение)
-    int stabilization_depth;    // 0 (не используется)
-    int stabilization_course;  // 0 (не используется)
 };
 ```
 
