@@ -55,8 +55,8 @@ Serial2 (PB10/PB11) → отладочный вывод (115200 baud)
 #define JOYSTICK2_Y PA3    // Джойстик 2 - Y ось
 
 // Пины кнопок
-#define BUTTON0 PA4        // Поворот камеры влево
-#define BUTTON1 PA5        // Поворот камеры вправо
+#define BUTTON0 PA4        // Поворот камеры вниз
+#define BUTTON1 PA5        // Поворот камеры вверх 
 #define BUTTON2 PA6        // Открыть манипулятор
 #define BUTTON3 PA7        // Закрыть манипулятор
 #define BUTTON4 PB0        // Включить освещение

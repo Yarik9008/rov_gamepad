@@ -22,8 +22,8 @@ extern HardwareSerial Serial2;
 #define JOYSTICK2_Y PA3    // Джойстик 2 - Y ось (не используется)
 
 // Пины кнопок (INPUT_PULLUP)
-#define BUTTON0 PA4        // B0 - Поворот камеры влево
-#define BUTTON1 PA5        // B1 - Поворот камеры вправо
+#define BUTTON0 PA4        // B0 - Поворот камеры вниз
+#define BUTTON1 PA5        // B1 - Поворот камеры вверх
 #define BUTTON2 PA6        // B2 - Открыть манипулятор
 #define BUTTON3 PA7        // B3 - Закрыть манипулятор
 #define BUTTON4 PB0        // B4 - Включить освещение
