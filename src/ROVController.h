@@ -182,29 +182,18 @@ private:
     }
     
     void outputTelemetry(const JoystickData& joy_data, const ROVCommands& commands) {
+        // Первая строка: показания джойстиков и кнопок
+        Serial2.print("JOYSTICKS: ");
         Serial2.print("J1X:");
-        Serial2.print(joy_data.linear_x);
+        Serial2.print(joy_data.linear_x, 2);
         Serial2.print(" J1Y:");
-        Serial2.print(joy_data.rotate_y);
+        Serial2.print(joy_data.rotate_y, 2);
         Serial2.print(" J2X:");
-        Serial2.print(joy_data.linear_y);
+        Serial2.print(joy_data.linear_y, 2);
         Serial2.print(" J2Y:");
-        Serial2.print(joy_data.linear_z);
-        Serial2.print(" PWM0:");
-        Serial2.print(commands.motor0_pwm);
-        Serial2.print(" PWM1:");
-        Serial2.print(commands.motor1_pwm);
-        Serial2.print(" PWM2:");
-        Serial2.print(commands.motor2_pwm);
-        Serial2.print(" PWM3:");
-        Serial2.print(commands.motor3_pwm);
-        Serial2.print(" CAM:");
-        Serial2.print(commands.camera_servo);
-        Serial2.print(" MAN:");
-        Serial2.print(commands.manipulator);
-        Serial2.print(" LIGHT:");
-        Serial2.print(commands.light);
-        Serial2.print(" B0:");
+        Serial2.print(joy_data.linear_z, 2);
+        Serial2.print(" | BUTTONS: ");
+        Serial2.print("B0:");
         Serial2.print(!digitalRead(BUTTON0));
         Serial2.print(" B1:");
         Serial2.print(!digitalRead(BUTTON1));
@@ -216,6 +205,32 @@ private:
         Serial2.print(!digitalRead(BUTTON4));
         Serial2.print(" B5:");
         Serial2.println(!digitalRead(BUTTON5));
+        
+        // Вторая строка: отправляемый пакет команд
+        Serial2.print("COMMANDS: ");
+        Serial2.print("M0:");
+        Serial2.print(commands.motor0_pwm);
+        Serial2.print(" M1:");
+        Serial2.print(commands.motor1_pwm);
+        Serial2.print(" M2:");
+        Serial2.print(commands.motor2_pwm);
+        Serial2.print(" M3:");
+        Serial2.print(commands.motor3_pwm);
+        Serial2.print(" M4:");
+        Serial2.print(commands.motor4_pwm);
+        Serial2.print(" M5:");
+        Serial2.print(commands.motor5_pwm);
+        Serial2.print(" M6:");
+        Serial2.print(commands.motor6_pwm);
+        Serial2.print(" M7:");
+        Serial2.print(commands.motor7_pwm);
+        Serial2.print(" | PAYLOAD: ");
+        Serial2.print("CAM:");
+        Serial2.print(commands.camera_servo);
+        Serial2.print(" MAN:");
+        Serial2.print(commands.manipulator);
+        Serial2.print(" LIGHT:");
+        Serial2.println(commands.light);
     }
     
     void updateCamera(const JoystickData& joy_data) {
