@@ -160,8 +160,6 @@ struct JoystickData {
   int servo_cam;     // -1, 0, 1
   int gripper;       // -1, 0, 1
   int led;           // 0, 1
-  int stabilization_depth;   // 0, 1
-  int stabilization_course;  // 0, 1
 };
 
 // Конфигурация кинематики

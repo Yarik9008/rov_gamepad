@@ -168,10 +168,6 @@ private:
         } else if (button_light_off && !button_light_on) {
             joy_data.led = -1;  // Выключить
         }
-        
-        // Стабилизация (пока не используется)
-        joy_data.stabilization_depth = 0;
-        joy_data.stabilization_course = 0;
     }
     
     // Применение коэффициентов вклада к нормализованным данным
