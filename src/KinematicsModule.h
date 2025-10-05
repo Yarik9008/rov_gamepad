@@ -29,8 +29,6 @@ public:
         switch (config.motor_count) {
             case 3: return calculate3Motor(joy_data);
             case 4: return calculate4Motor(joy_data);
-            case 6: return calculate6Motor(joy_data);
-            case 8: return calculate8Motor(joy_data);
             default: return calculate4Motor(joy_data);
         }
     }
@@ -44,8 +42,8 @@ public:
     }
     
     // Получение информации о поддерживаемых схемах
-    static const char* getSupportedSchemes() { return "3, 4, 6, 8 motors"; }
-    static int getMaxMotors() { return 8; }
+    static const char* getSupportedSchemes() { return "3, 4 motors"; }
+    static int getMaxMotors() { return 4; }
     static int getMinMotors() { return 3; }
 
 private:
@@ -103,60 +101,6 @@ private:
         pwm.motor5_pwm = PWM_CENTER;
         pwm.motor6_pwm = PWM_CENTER;
         pwm.motor7_pwm = PWM_CENTER;
-        
-        applyMotorReverseToAll(pwm);
-        constrainPWM(pwm);
-        return pwm;
-    }
-    
-    MotorPWMValues calculate6Motor(const JoystickData& joy_data) {
-        MotorPWMValues pwm;
-        
-        // Предвычисление коэффициентов для упрощения
-        float forward_back = joy_data.linear_x * PWM_RANGE / 2;
-        float left_right = joy_data.linear_y * PWM_RANGE / 2;
-        float up_down = joy_data.linear_z * PWM_RANGE / 2;
-        float rotate = joy_data.rotate_y * PWM_RANGE / 2;
-        
-        // Математика управления для 6 моторов (упрощенная)
-        // Горизонтальные моторы (4 шт)
-        pwm.motor0_pwm = PWM_CENTER + forward_back + rotate;   // Передний правый
-        pwm.motor1_pwm = PWM_CENTER - forward_back + rotate;   // Задний правый
-        pwm.motor2_pwm = PWM_CENTER - forward_back - rotate;   // Задний левый
-        pwm.motor3_pwm = PWM_CENTER + forward_back - rotate;   // Передний левый
-        // Вертикальные моторы (2 шт)
-        pwm.motor4_pwm = PWM_CENTER + left_right + up_down;   // Правый вертикальный
-        pwm.motor5_pwm = PWM_CENTER - left_right + up_down;   // Левый вертикальный
-        
-        // Остальные моторы в нейтральном положении
-        pwm.motor6_pwm = PWM_CENTER;
-        pwm.motor7_pwm = PWM_CENTER;
-        
-        applyMotorReverseToAll(pwm);
-        constrainPWM(pwm);
-        return pwm;
-    }
-    
-    MotorPWMValues calculate8Motor(const JoystickData& joy_data) {
-        MotorPWMValues pwm;
-        
-        // Предвычисление коэффициентов для упрощения
-        float forward_back = joy_data.linear_x * PWM_RANGE / 2;
-        float left_right = joy_data.linear_y * PWM_RANGE / 2;
-        float up_down = joy_data.linear_z * PWM_RANGE / 2;
-        float rotate = joy_data.rotate_y * PWM_RANGE / 2;
-        
-        // Математика управления для 8 моторов (упрощенная)
-        // Горизонтальные моторы (4 шт)
-        pwm.motor0_pwm = PWM_CENTER + forward_back + rotate;   // Передний правый
-        pwm.motor1_pwm = PWM_CENTER - forward_back + rotate;   // Задний правый
-        pwm.motor2_pwm = PWM_CENTER - forward_back - rotate;   // Задний левый
-        pwm.motor3_pwm = PWM_CENTER + forward_back - rotate;   // Передний левый
-        // Вертикальные моторы (4 шт)
-        pwm.motor4_pwm = PWM_CENTER + left_right + up_down;   // Правый верхний
-        pwm.motor5_pwm = PWM_CENTER - left_right + up_down;   // Левый верхний
-        pwm.motor6_pwm = PWM_CENTER - left_right - up_down;   // Левый нижний
-        pwm.motor7_pwm = PWM_CENTER + left_right - up_down;   // Правый нижний
         
         applyMotorReverseToAll(pwm);
         constrainPWM(pwm);

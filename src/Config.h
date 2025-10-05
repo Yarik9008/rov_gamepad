@@ -49,7 +49,7 @@ struct JoystickCoefficients {
 #define DEBUG_BAUD 115200           // Скорость Serial2 (debug)
 
 // Настройки кинематики
-#define DEFAULT_MOTOR_COUNT 4      // Количество моторов по умолчанию (3, 4, 6, 8)
+#define DEFAULT_MOTOR_COUNT 4      // Количество моторов по умолчанию (3, 4)
 
 // Настройки фильтра Калмана
 #define KALMAN_Q 25                  // Шум процесса (чувствительность к изменениям)
@@ -165,7 +165,7 @@ struct JoystickData {
 
 // Конфигурация кинематики
 struct KinematicsConfig {
-  int motor_count;           // Количество моторов (3, 4, 6, 8)
+  int motor_count;           // Количество моторов (3, 4)
   bool reverse_motor[8];     // Реверс для каждого мотора
 };
 
@@ -180,7 +180,7 @@ inline bool isValidKalmanConfig(float q, float r, float p_init) {
 
 // Валидация конфигурации кинематики
 inline bool isValidKinematicsConfig(const KinematicsConfig& config) {
-    return (config.motor_count >= 3 && config.motor_count <= 8);
+    return (config.motor_count >= 3 && config.motor_count <= 4);
 }
 
 // Валидация PWM значений
