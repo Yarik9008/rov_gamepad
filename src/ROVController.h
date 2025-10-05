@@ -235,12 +235,19 @@ private:
     void updateCamera(const JoystickData& joy_data) {
         unsigned long current_time = millis();
         if (current_time - payload_state.lastCameraUpdate >= CAMERA_UPDATE_INTERVAL) {
-            if (joy_data.servo_cam == -1) {
-                // Поворот влево
+            int camera_direction = joy_data.servo_cam;
+            
+            // Применяем инверсию если включена
+            if (CAMERA_INVERT) {
+                camera_direction = -camera_direction;
+            }
+            
+            if (camera_direction == -1) {
+                // Поворот вниз (или влево при инверсии)
                 payload_state.camera_servo -= CAMERA_SPEED;
                 payload_state.camera_servo = constrain(payload_state.camera_servo, CAMERA_SAFE_MIN, CAMERA_SAFE_MAX);
-            } else if (joy_data.servo_cam == 1) {
-                // Поворот вправо
+            } else if (camera_direction == 1) {
+                // Поворот вверх (или вправо при инверсии)
                 payload_state.camera_servo += CAMERA_SPEED;
                 payload_state.camera_servo = constrain(payload_state.camera_servo, CAMERA_SAFE_MIN, CAMERA_SAFE_MAX);
             }

@@ -73,6 +73,7 @@ struct JoystickCoefficients {
 #define CAMERA_SPEED 25              // Скорость изменения положения камеры
 #define CAMERA_SAFE_MIN (PWM_MIN + 100)  // Безопасный минимум камеры
 #define CAMERA_SAFE_MAX (PWM_MAX - 100)  // Безопасный максимум камеры
+#define CAMERA_INVERT false          // Инвертировать направление поворота камеры
 
 // Настройки манипулятора
 #define MANIPULATOR_SAFE_MIN (PWM_MIN + 250)  // Безопасный минимум манипулятора
