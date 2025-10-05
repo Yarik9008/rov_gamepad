@@ -166,7 +166,7 @@ private:
         if (button_light_on && !button_light_off) {
             joy_data.led = 1;   // Включить
         } else if (button_light_off && !button_light_on) {
-            joy_data.led = 0;   // Выключить
+            joy_data.led = -1;  // Выключить
         }
         
         // Стабилизация (пока не используется)

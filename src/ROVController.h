@@ -23,7 +23,7 @@ private:
     struct PayloadState {
         int camera_servo = PWM_CENTER;
         int manipulator = PWM_MIN;
-        int light = LIGHT_OFF;
+        int light = PWM_MIN;  // Начальное состояние - выключено
         unsigned long lastCameraUpdate = 0;
     } payload_state;
     
@@ -246,12 +246,12 @@ private:
     }
     
     void updateLighting(const JoystickData& joy_data) {
-        if (joy_data.led == 1) {
-            // Включить освещение
-            payload_state.light = LIGHT_ON;
-        } else if (joy_data.led == 0) {
+        if (joy_data.led == -1) {
             // Выключить освещение
             payload_state.light = LIGHT_OFF;
+        } else if (joy_data.led == 1) {
+            // Включить освещение
+            payload_state.light = LIGHT_ON;
         }
     }
 };

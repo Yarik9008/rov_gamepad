@@ -92,8 +92,8 @@ struct MotorReverseConfig {
 
 
 // Настройки освещения
-#define LIGHT_OFF 1000      // Свет выключен
-#define LIGHT_ON 2000       // Максимальная яркость
+#define LIGHT_OFF PWM_MIN   // Свет выключен (1000)
+#define LIGHT_ON PWM_MAX    // Максимальная яркость (2000)
 
 // Настройки управления выводом
 #define DEBUG_TELEMETRY false     // Включить дополнительную телеметрию при отладке
